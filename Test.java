@@ -7,23 +7,43 @@ import java.util.Scanner;
  *February 25, 2016
  */
 public class Test {
+	public static Scanner inText = new Scanner(System.in);
+	
+	  public static String stringR(Scanner inText) {
+    	  String UI = null;
+    	  Boolean isEmpty = true;
 
-public static Scanner inText = new Scanner(System.in);
-
+    	  while (isEmpty) {
+    	   UI = inText.nextLine();
+    	   if (UI != null) {
+    	    isEmpty = false;
+    	   }
+    	  }
+    	  return UI;
+    	 }
+	  
   public static void main(String[] args) {    
 
 	    Jog.setLogger(new FileLogger("test.ics"));
 	    
 	    //Scanner inText = new Scanner(System.in);
-      
+	    //public static Scanner inText = new Scanner(System.in);
 	    
-	    String loc; //location
-	    String sum; //summary
-	    String desc; //
-	    String geopos; //
-	    String strt; //
-	    String end; //
-      String cls; //
+	    String k;
+	    String b;
+	    String s;
+	    String v;
+	    String q;
+	    String y;
+      String cls;
+      	int w;
+      	int op;
+      	int oy;
+      	int oi;
+      	int lj;
+      	int lk; 
+      	int lu;
+      	int lp;
 	    
 	    Jog.enableLevel(Level.BEGIN);
 	    Jog.enableLevel(Level.CALSCALE);
@@ -39,30 +59,54 @@ public static Scanner inText = new Scanner(System.in);
 	    Jog.enableLevel(Level.GEO);
       Jog.enableLevel(Level.CLASS);
 	    
-      System.out.println("blank inputs are not read");
-      
 	    System.out.println("Please enter location: ");
-	    loc = getIn();
+	    k = inText.nextLine();
 	    
 	    System.out.println("Please enter summary: ");
-	    sum = getIn();
+	    b = inText.nextLine();
 	    
 	    System.out.println("Please enter description: ");
-	    desc = getIn();
+	    s = inText.nextLine();
 	    
 	    System.out.println("Please enter geographical position (format: "
 	    		+ "37.386013;"
 	    		+ "-122.082932): ");
-	    geopos = getIn();
+	    v = inText.nextLine();
 	    
 	    System.out.println("Please enter start time (format: 20160225T153000Z): ");
-	    strt = getIn();
+	    q = inText.nextLine();
 	    
 	    System.out.println("Please enter end time (format: 20160225T163000Z): ");
-	    end = getIn();
+	    y = inText.nextLine();
       
       System.out.println("Please enter a classification (format: PUBLIC, PRIVATE, CONFIDENTIAL, or IANA-TOKEN (all caps))): ");
-	    cls = getIn();
+	    cls = inText.nextLine();
+	    
+	    System.out.println("Please enter start year: ");
+	    w = inText.nextInt();
+	    
+	    System.out.println("Please enter start Month: ");
+	    op = inText.nextInt();
+	    
+	    System.out.println("Please enter start day: ");
+	    oy = inText.nextInt();
+	    
+	    System.out.println("Please enter start hour: ");
+	    oi = inText.nextInt();
+	    
+	    System.out.println("Please enter end year: ");
+	    lj = inText.nextInt();
+	    
+	    System.out.println("Please enter end month: ");
+	    lk = inText.nextInt();
+	    
+	    System.out.println("Please enter end day: ");
+	    lu = inText.nextInt();
+	   
+	    System.out.println("Please enter end hour: ");
+	    lp = inText.nextInt();
+	    
+	    
 	    
 	    /*
 	    Jog.begin("VCALENDAR");
@@ -85,34 +129,18 @@ public static Scanner inText = new Scanner(System.in);
 	    Jog.version("2.0");
 	    Jog.calscale("GREGORIAN");
 	    Jog.begin("VEVENT");
-	    Jog.dtstart(strt);
-	    Jog.dtend(end);
-	    Jog.description(desc);
-	    Jog.location(loc);
-	    Jog.summary(sum);
-      Jog.geo(geopos);
+	    Jog.dtstart(w + "" + op + "" + oy + "T" + oi + "00" + "Z");
+	    Jog.dtend(lj + "" + lk + "" + lu + "T" + lp + "00" + "Z");
+	    Jog.description(s);
+	    Jog.location(k);
+	    Jog.summary(b);
+      Jog.geo(v);
       Jog.Class(cls);
 	    Jog.end("VEVENT");
 	    Jog.end("VCALENDAR");
 	    
 	    Jog.printLog();
 	    
-  }
-  
-  
-  /* Function getIn
-     Asks for user input, asks again if the input is blank
-     returns the string input
-  */
-  private static String getIn() {
-      //Scanner inText = new Scanner(System.in);
-      
-      String var = "";
-      
-      while(var.equals("")) {
-          var = inText.nextLine();
-      }
-      return(var);
   }
 
 }
